@@ -213,7 +213,7 @@ Please confirm my order. Thank you!`;
       <section id="home" className="bg-green-50">
         <div className="mx-auto max-w-6xl px-4 py-20">
           <div className="max-w-3xl">
-            <p className="mb-3 font-semibold text-green-600">Welcome to FreshBite 👋</p>
+            <p className="mb-3 font-semibold text-green-600">Welcome to BizOrder 👋</p>
             <h1 className="text-4xl font-bold leading-tight text-gray-900 sm:text-5xl">
               Fresh Food,<span className="text-green-600"> Delivered Simply</span>
             </h1>
@@ -232,7 +232,7 @@ Please confirm my order. Thank you!`;
       <section className="bg-white">
         <div className="mx-auto max-w-6xl px-4 py-16">
           <div className="mb-10 text-center">
-            <p className="font-semibold text-green-600">Why FreshBite?</p>
+            <p className="font-semibold text-green-600">Why BizOrder?</p>
             <h2 className="mt-2 text-3xl font-bold text-gray-900">Simple. Fast. Convenient.</h2>
           </div>
           <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
@@ -332,7 +332,7 @@ Please confirm my order. Thank you!`;
             <div>
               <p className="font-semibold text-green-600">About Us</p>
               <h2 className="mt-2 text-3xl font-bold text-gray-900 sm:text-4xl">Food ordering made simple.</h2>
-              <p className="mt-5 leading-relaxed text-gray-600">FreshBite is a simple online food ordering platform designed to make ordering convenient.</p>
+              <p className="mt-5 leading-relaxed text-gray-600">BizOrder is a simple online food ordering platform designed to make ordering convenient.</p>
               <p className="mt-4 leading-relaxed text-gray-600">Choose products and send your order directly to WhatsApp. You can order one product immediately or add several products to your cart.</p>
               <a href="#products" className="mt-6 inline-block rounded-lg bg-green-600 px-6 py-3 text-white transition hover:bg-green-700">Browse Products</a>
             </div>
@@ -378,7 +378,7 @@ Please confirm my order. Thank you!`;
       <footer className="bg-gray-900 text-white">
         <div className="mx-auto max-w-6xl px-4 py-10">
           <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-            <div><h2 className="text-xl font-bold text-green-400">FreshBite</h2><p className="mt-3 text-gray-400">Fresh food. Simple ordering.</p></div>
+            <div><h2 className="text-xl font-bold text-green-400">BizOrder</h2><p className="mt-3 text-gray-400">Fresh food. Simple ordering.</p></div>
             <div><h3 className="font-semibold">Quick Links</h3><div className="mt-3 flex flex-col gap-2"><a href="#home" className="text-gray-400 hover:text-white">Home</a><a href="#products" className="text-gray-400 hover:text-white">Products</a><a href="#about" className="text-gray-400 hover:text-white">About</a><a href="#contact" className="text-gray-400 hover:text-white">Contact</a></div></div>
             <div><h3 className="font-semibold">Contact</h3><p className="mt-3 text-gray-400">WhatsApp: 09017928914</p></div>
           </div>
@@ -457,3 +457,4 @@ Please confirm my order. Thank you!`;
 }
 
 export default App;
+  
