@@ -230,42 +230,78 @@ function Store() {
   return (
     <div className="min-h-screen bg-gray-50 text-gray-800">
       {/* Navigation */}
-      <header className="sticky top-0 z-40 border-b bg-white shadow-sm">
-        <nav className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4 px-4 py-4">
-          <a
-            href="#home"
-            className="text-2xl font-extrabold text-green-700"
-          >
-            BizOrder
-          </a>
+    
 
-          <div className="flex flex-wrap items-center gap-4 text-sm font-medium">
-            <a href="#home" className="hover:text-green-700">
-              Home
-            </a>
+<header className="sticky top-0 z-40 border-b  bg-white shadow-sm">
+  <nav className="mx-auto flex max-w-8xl flex-wrap items-center justify-between gap-4 bg-green-700 px-4 py-4">
+    <a
+      href="#home"
+      className="text-2xl font-extrabold text-white"
+    >
+      BizOrder
+    </a>
 
-            <a href="#products" className="hover:text-green-700">
-              Products
-            </a>
+    <div className="flex flex-wrap items-center gap-4 text-sm font-medium">
+      <a href="#home" className="text-white transition hover:text-gray-200">
+        Home
+      </a>
 
-            <a href="#cart" className="hover:text-green-700">
-              Cart ({totalItems})
-            </a>
+      <a href="#products" className="text-white transition hover:text-gray-200">
+        Products
+      </a>
 
-            <Link
-              to="/admin"
-              className="rounded-lg bg-gray-100 px-3 py-2 hover:bg-gray-200"
-            >
-              Admin
-            </Link>
-          </div>
-        </nav>
-      </header>
+      <a href="#about" className="text-white transition hover:text-gray-200">
+        About Us
+      </a>
+
+      <a href="#contact" className="text-white transition hover:text-gray-200">
+        Contact Us
+      </a>
+
+      {/* Red Shopping Cart */}
+      <a
+        href="#cart"
+        aria-label={`Shopping cart with ${totalItems} items`}
+        className="relative inline-flex items-center gap-2 rounded-lg bg-red-600 px-4 py-2 font-bold text-white shadow transition hover:bg-red-700"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className="h-5 w-5"
+          aria-hidden="true"
+        >
+          <circle cx="9" cy="21" r="1" />
+          <circle cx="20" cy="21" r="1" />
+          <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+        </svg>
+
+        <span>Cart</span>
+
+        <span className="flex min-h-6 min-w-6 items-center justify-center rounded-full bg-white px-1 text-xs font-extrabold text-red-600">
+          {totalItems}
+        </span>
+      </a>
+
+      <Link
+        to="/admin"
+        className="rounded-lg bg-white px-3 py-2 font-semibold text-red-600 transition hover:bg-gray-100"
+      >
+        Admin
+      </Link>
+    </div>
+  </nav>
+</header>
+
 
       {/* Hero section */}
       <section
         id="home"
-        className="bg-gradient-to-r from-green-800 to-green-600 px-4 py-16 text-white sm:py-24"
+        className="bg-gradient-to-r from-green-600 to-green-500 px-4 py-16 text-white sm:py-24"
       >
         <div className="mx-auto max-w-7xl">
           <p className="mb-3 font-semibold uppercase tracking-widest text-green-100">
@@ -348,7 +384,7 @@ function Store() {
           {/* Product Image */}
           <div className="h-44 w-full overflow-hidden bg-green-50">
             {product.image ? (
-              <imgn
+              <img
                 src={product.image}
                 alt={product.name}
                 className="h-full w-full object-cover"
@@ -403,8 +439,117 @@ function Store() {
     </div>
   )}
 
+{/* About Us Section */}
+<section
+  id="about"
+  className="scroll-mt-24 bg-gray-50 px-6 py-16 sm:px-10 lg:px-16"
+>
+  <div className="mx-auto max-w-5xl">
+    <p className="font-semibold uppercase tracking-widest text-green-700">
+      About BizOrder
+    </p>
+
+    <h2 className="mt-3 text-3xl font-extrabold text-gray-900 sm:text-4xl">
+      Your Style. Your Choice. Your Order.
+    </h2>
+
+    <div className="mt-6 max-w-3xl space-y-4 text-base leading-8 text-gray-600">
+      <p>
+        Welcome to BizOrder, your convenient destination for
+        clothing shopping. We make it easy to explore available
+        clothes, check prices, and order your preferred items
+        without unnecessary stress.
+      </p>
+
+      <p>
+        We believe clothing is more than what you wear. It is a
+        way to express your personality, confidence, and unique
+        sense of style.
+      </p>
+
+      <p>
+        Our goal is to give you a simple shopping experience.
+        Browse our available clothing, choose what you like,
+        and contact us on WhatsApp to ask questions or place
+        your order.
+      </p>
+    </div>
+
+    <div className="mt-10 grid gap-6 sm:grid-cols-2">
+      <div className="rounded-xl border bg-white p-6 shadow-sm">
+        <div className="text-3xl">👕</div>
+
+        <h3 className="mt-3 text-xl font-bold text-gray-900">
+          Explore Your Style
+        </h3>
+
+        <p className="mt-2 leading-7 text-gray-600">
+          Discover the clothing items available in our store
+          and find options that suit your personal style.
+        </p>
+      </div>
+
+      <div className="rounded-xl border bg-white p-6 shadow-sm">
+        <div className="text-3xl">💬</div>
+
+        <h3 className="mt-3 text-xl font-bold text-gray-900">
+          Shopping Made Simple
+        </h3>
+
+        <p className="mt-2 leading-7 text-gray-600">
+          Have a question about an item? Reach us directly
+          through WhatsApp for assistance with your order.
+        </p>
+      </div>
+    </div>
+
+    <a
+      href="#products"
+      className="mt-8 inline-block rounded-lg bg-green-700 px-6 py-3 font-semibold text-white transition hover:bg-green-800"
+    >
+      Explore Our Collection
+    </a>
+  </div>
+</section>
+
       </section>
 
+
+{/* Contact Us Section */}
+<section
+  id="contact"
+  className="scroll-mt-24 bg-white px-6 py-16 sm:px-10 lg:px-16"
+>
+  <div className="mx-auto max-w-4xl rounded-2xl bg-green-50 px-6 py-10 text-center sm:px-12 sm:py-14">
+    <p className="font-semibold uppercase tracking-widest text-green-700">
+      Contact Us
+    </p>
+
+    <h2 className="mt-3 text-3xl font-extrabold text-gray-900 sm:text-4xl">
+      We're Here to Help
+    </h2>
+
+    <p className="mx-auto mt-5 max-w-2xl leading-8 text-gray-600">
+      Do you have a question about our clothing, prices,
+      available items, or an order? Send us a message on
+      WhatsApp. We'd be happy to hear from you.
+    </p>
+
+    <a
+      href="https://wa.me/2349017928914?text=Hello%2C%20I%27m%20chatting%20from%20BizOrder.%20I%20have%20a%20question%20about%20your%20clothing%20products."
+      target="_blank"
+      rel="noopener noreferrer"
+      className="mt-8 inline-flex items-center justify-center gap-2 rounded-lg bg-green-700 px-7 py-4 font-bold text-white transition hover:bg-green-800"
+    >
+      <icon name="message-circle" size="lg" />
+      Chat with Us on WhatsApp
+    </a>
+
+    <p className="mt-4 text-sm text-gray-500">
+      We look forward to hearing from you.
+    </p>
+  </div>
+</section>
       {/* Cart section */}
       <section id="cart" className="bg-white px-4 py-12">
         <div className="mx-auto max-w-5xl">
