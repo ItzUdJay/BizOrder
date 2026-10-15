@@ -21,8 +21,17 @@ function Store() {
   const [loadingProducts, setLoadingProducts] = useState(true);
   const [productError, setProductError] = useState("");
   const [cartMessage, setCartMessage] = useState("");
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [zoomedImage, setZoomedImage] = useState(null);
+
+  // Close the image viewer when the Escape key is pressed.
+  useEffect(() => {
+    function handleEscape(event) {
+      if (event.key === "Escape") setZoomedImage(null);
+    }
+
+    window.addEventListener("keydown", handleEscape);
+    return () => window.removeEventListener("keydown", handleEscape);
+  }, []);
 
   // Load products from Firebase when the shop opens.
   useEffect(() => {
@@ -230,118 +239,75 @@ function Store() {
   }
 
   return (
-    <div className={`bizorder-app min-h-screen ${isDarkMode ? "bizorder-dark" : "bizorder-light"} bg-gray-50 text-gray-800`}>
-      <style>{`
-        .bizorder-dark { background: #111827 !important; color: #f3f4f6 !important; }
-        .bizorder-dark section,
-        .bizorder-dark article,
-        .bizorder-dark input,
-        .bizorder-dark .bg-white,
-        .bizorder-dark .bg-gray-50,
-        .bizorder-dark .bg-green-50,
-        .bizorder-dark .bg-amber-50 {
-          background-color: #1f2937 !important;
-          color: #f3f4f6 !important;
-        }
-        .bizorder-dark .text-gray-900,
-        .bizorder-dark .text-gray-800,
-        .bizorder-dark .text-gray-700,
-        .bizorder-dark .text-gray-600,
-        .bizorder-dark .text-gray-500 { color: #d1d5db !important; }
-        .bizorder-dark .border,
-        .bizorder-dark .border-b { border-color: #4b5563 !important; }
-        .bizorder-dark .bizorder-footer { background-color: #030712 !important; }
-        .bizorder-dark .bg-gradient-to-r { color: #fff !important; }
-      `}</style>
+    <div className="min-h-screen bg-gray-50 text-gray-800">
       {/* Navigation */}
-      <header className="sticky top-0 z-40 border-b border-gray-200 shadow-sm">
-        <nav className="mx-auto flex max-w-8xl items-center justify-between gap-3 bg-green-700 px-4 py-3">
-          <a href="#home" className="text-2xl font-extrabold text-white">
-            BizOrder
-          </a>
+    
 
-          <div className="flex items-center gap-2">
-            <button
-              type="button"
-              onClick={() => setIsDarkMode((current) => !current)}
-              aria-label={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
-              aria-pressed={isDarkMode}
-              className="rounded-full border border-white/40 px-3 py-2 text-sm font-semibold text-white transition hover:bg-white/15"
-            >
-              {isDarkMode ? "☀️ Light" : "🌙 Dark"}
-            </button>
+<header className="sticky top-0 z-40 border-b  bg-white shadow-sm">
+  <nav className="mx-auto flex max-w-8xl flex-wrap items-center justify-between gap-4 bg-green-700 px-4 py-4">
+    <a
+      href="#home"
+      className="text-2xl font-extrabold text-white"
+    >
+      BizOrder
+    </a>
 
-            {/* Keep the cart visible outside the mobile menu */}
-            <a
-              href="#cart"
-              aria-label={`Shopping cart with ${totalItems} items`}
-              className="relative inline-flex items-center gap-2 rounded-lg bg-red-600 px-3 py-2 font-bold text-white shadow transition hover:bg-red-700"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="h-5 w-5"
-                aria-hidden="true"
-              >
-                <circle cx="9" cy="21" r="1" />
-                <circle cx="20" cy="21" r="1" />
-                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
-              </svg>
-              <span>Cart</span>
-              <span className="flex min-h-6 min-w-6 items-center justify-center rounded-full bg-white px-1 text-xs font-extrabold text-red-600">
-                {totalItems}
-              </span>
-            </a>
+    <div className="flex flex-wrap items-center gap-4 text-sm font-medium">
+      <a href="#home" className="text-white transition hover:text-gray-200">
+        Home
+      </a>
 
-            <button
-              type="button"
-              onClick={() => setIsMenuOpen((open) => !open)}
-              aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"}
-              aria-expanded={isMenuOpen}
-              className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-white/40 text-white transition hover:bg-white/15 md:hidden"
-            >
-              {isMenuOpen ? (
-                <span className="text-2xl leading-none" aria-hidden="true">×</span>
-              ) : (
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-6 w-6" aria-hidden="true">
-                  <path strokeLinecap="round" d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-              )}
-            </button>
-          </div>
+      <a href="#products" className="text-white transition hover:text-gray-200">
+        Products
+      </a>
 
-          <div className={`${isMenuOpen ? "flex" : "hidden"} absolute left-0 right-0 top-full flex-col gap-1 border-t border-green-600 bg-green-700 px-4 py-3 text-sm font-medium shadow-lg md:static md:flex md:flex-row md:items-center md:gap-5 md:border-0 md:bg-transparent md:p-0 md:shadow-none`}>
-            {[
-              ["Home", "#home"],
-              ["Products", "#products"],
-              ["About Us", "#about"],
-              ["Contact Us", "#contact"],
-            ].map(([label, href]) => (
-              <a
-                key={href}
-                href={href}
-                onClick={() => setIsMenuOpen(false)}
-                className="rounded-lg px-3 py-2 text-white transition hover:bg-green-600 md:hover:bg-white/10"
-              >
-                {label}
-              </a>
-            ))}
-            <Link
-              to="/admin"
-              onClick={() => setIsMenuOpen(false)}
-              className="inline-flex items-center gap-2 rounded-full bg-white px-3 py-2 font-semibold text-green-800 transition hover:bg-green-50"
-            >
-              <span className="flex h-7 w-7 items-center justify-center rounded-full bg-green-100 text-sm font-extrabold text-green-800" aria-hidden="true">A</span>
-              Admin
-            </Link>
-          </div>
-        </nav>
-      </header>
+      <a href="#about" className="text-white transition hover:text-gray-200">
+        About Us
+      </a>
+
+      <a href="#contact" className="text-white transition hover:text-gray-200">
+        Contact Us
+      </a>
+
+      {/* Red Shopping Cart */}
+      <a
+        href="#cart"
+        aria-label={`Shopping cart with ${totalItems} items`}
+        className="relative inline-flex items-center gap-2 rounded-lg bg-red-600 px-4 py-2 font-bold text-white shadow transition hover:bg-red-700"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className="h-5 w-5"
+          aria-hidden="true"
+        >
+          <circle cx="9" cy="21" r="1" />
+          <circle cx="20" cy="21" r="1" />
+          <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+        </svg>
+
+        <span>Cart</span>
+
+        <span className="flex min-h-6 min-w-6 items-center justify-center rounded-full bg-white px-1 text-xs font-extrabold text-red-600">
+          {totalItems}
+        </span>
+      </a>
+
+      <Link
+        to="/admin"
+        className="rounded-lg bg-white px-3 py-2 font-semibold text-red-600 transition hover:bg-gray-100"
+      >
+        Admin
+      </Link>
+    </div>
+  </nav>
+</header>
+
 
       {/* Hero section */}
       <section
@@ -426,19 +392,27 @@ function Store() {
           key={item.id}
           className="flex flex-col overflow-hidden rounded-xl border bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-md"
         >
-          {/* Product Image */}
-          <div className="h-44 w-full overflow-hidden bg-green-50">
+          {/* Product Image: tap to view the full image */}
+          <div className="h-64 w-full overflow-hidden bg-gray-100 sm:h-72">
             {item.image ? (
-              <img
-                src={item.image}
-                alt={item.name}
-                className="h-full w-full object-cover"
-                onError={(e) => {
-                  e.currentTarget.style.display = "none";
-                  e.currentTarget.parentElement.innerHTML =
-                    '<div class="flex h-full items-center justify-center text-7xl">🛍️</div>';
-                }}
-              />
+              <button
+                type="button"
+                onClick={() => setZoomedImage(item)}
+                aria-label={`View a larger image of ${item.name}`}
+                className="group relative flex h-full w-full cursor-zoom-in items-center justify-center"
+              >
+                <img
+                  src={item.image}
+                  alt={item.name}
+                  className="h-full w-full object-contain transition-transform duration-200 group-hover:scale-[1.02]"
+                  onError={(event) => {
+                    event.currentTarget.style.visibility = "hidden";
+                  }}
+                />
+                <span className="absolute bottom-2 right-2 rounded-full bg-black/65 px-3 py-1 text-xs font-semibold text-white">
+                  Tap to zoom 🔍
+                </span>
+              </button>
             ) : (
               <div className="flex h-full items-center justify-center text-7xl">
                 🛍️
@@ -449,7 +423,7 @@ function Store() {
           {/* Product Details */}
           <div className="flex flex-1 flex-col p-5">
             <p className="text-sm font-medium text-green-700">
-              {item.category || "Product"}
+              {ClipboardItem.category || "Product"}
             </p>
 
             <h3 className="mt-2 text-xl font-bold">
@@ -556,7 +530,9 @@ function Store() {
     </a>
   </div>
 </section>
+
       </section>
+
 
 {/* Contact Us Section */}
 <section
@@ -634,19 +610,8 @@ function Store() {
                     className="flex flex-wrap items-center justify-between gap-4 rounded-xl border p-4"
                   >
                     <div className="flex min-w-0 items-center gap-4">
-                      <div className="flex h-16 w-16 shrink-0 items-center justify-center overflow-hidden rounded-lg bg-green-50">
-                        {item.image ? (
-                          <img
-                            src={item.image}
-                            alt={item.name}
-                            className="h-full w-full object-cover"
-                            onError={(event) => {
-                              event.currentTarget.style.display = "none";
-                            }}
-                          />
-                        ) : (
-                          <span className="text-3xl">🛍️</span>
-                        )}
+                      <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-lg bg-green-50 text-3xl">
+                        {item.image || "🛍️"}
                       </div>
 
                       <div>
@@ -728,55 +693,51 @@ function Store() {
         </div>
       </section>
 
-      {/* Footer with quick navigation */}
-      <footer className="bizorder-footer bg-gray-900 px-4 py-10 text-white">
-        <div className="mx-auto grid max-w-7xl gap-8 sm:grid-cols-2 lg:grid-cols-4">
-          <div>
-            <h2 className="text-xl font-extrabold">BizOrder</h2>
-            <p className="mt-3 max-w-xs text-sm leading-6 text-gray-300">
-              Simple clothing shopping, convenient ordering, and personal service.
-            </p>
-          </div>
+      {/* Footer */}
+      <footer className="bg-gray-900 px-4 py-8 text-center text-white">
+        <h2 className="text-xl font-bold">BizOrder</h2>
 
-          <div>
-            <h3 className="font-bold">Quick Links</h3>
-            <div className="mt-3 flex flex-col items-start gap-2 text-sm text-gray-300">
-              <a href="#home" className="hover:text-white">Home</a>
-              <a href="#products" className="hover:text-white">Shop Products</a>
-              <a href="#about" className="hover:text-white">About Us</a>
-              <a href="#contact" className="hover:text-white">Contact Us</a>
-            </div>
-          </div>
+        <p className="mt-2 text-sm text-gray-300">
+          Simple shopping. Convenient ordering.
+        </p>
 
-          <div>
-            <h3 className="font-bold">Your Order</h3>
-            <div className="mt-3 flex flex-col items-start gap-2 text-sm text-gray-300">
-              <a href="#cart" className="hover:text-white">View Cart ({totalItems})</a>
-              <a href="#products" className="hover:text-white">Continue Shopping</a>
-              <Link to="/admin" className="hover:text-white">Admin Dashboard</Link>
-            </div>
-          </div>
-
-          <div>
-            <h3 className="font-bold">Need Help?</h3>
-            <p className="mt-3 text-sm leading-6 text-gray-300">
-              Contact us about products, prices, or your order.
-            </p>
-            <a
-              href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hello, BizOrder. I need help with an order.")}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-3 inline-flex rounded-lg bg-green-600 px-4 py-2 text-sm font-bold text-white hover:bg-green-700"
-            >
-              Chat on WhatsApp
-            </a>
-          </div>
-        </div>
-
-        <div className="mx-auto mt-8 max-w-7xl border-t border-gray-700 pt-5 text-center text-xs text-gray-400">
+        <p className="mt-4 text-xs text-gray-400">
           © {new Date().getFullYear()} BizOrder. All rights reserved.
-        </div>
+        </p>
       </footer>
+
+      {/* Full-screen product image viewer */}
+      {zoomedImage && (
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 p-4 sm:p-8"
+          role="dialog"
+          aria-modal="true"
+          aria-label={`Large image of ${zoomedImage.name}`}
+          onClick={() => setZoomedImage(null)}
+        >
+          <button
+            type="button"
+            onClick={() => setZoomedImage(null)}
+            aria-label="Close enlarged image"
+            className="absolute right-4 top-4 z-[101] flex h-11 w-11 items-center justify-center rounded-full bg-white text-3xl font-bold text-gray-900 shadow-lg transition hover:bg-gray-200"
+          >
+            ×
+          </button>
+          <div
+            className="flex max-h-full max-w-5xl flex-col items-center gap-3"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <img
+              src={zoomedImage.image}
+              alt={zoomedImage.name}
+              className="max-h-[80vh] max-w-full rounded-lg object-contain"
+            />
+            <p className="text-center text-lg font-semibold text-white">
+              {zoomedImage.name}
+            </p>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
