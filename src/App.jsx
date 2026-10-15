@@ -348,7 +348,7 @@ function Store() {
           {/* Product Image */}
           <div className="h-44 w-full overflow-hidden bg-green-50">
             {product.image ? (
-              <img
+              <imgn
                 src={product.image}
                 alt={product.name}
                 className="h-full w-full object-cover"
