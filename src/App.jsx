@@ -22,6 +22,8 @@ function Store() {
   const [productError, setProductError] = useState("");
   const [cartMessage, setCartMessage] = useState("");
   const [zoomedImage, setZoomedImage] = useState(null);
+  const [menuOpen, setMenuOpen] = useState(false);
+
 
   // Close the image viewer when the Escape key is pressed.
   useEffect(() => {
@@ -243,37 +245,25 @@ function Store() {
       {/* Navigation */}
     
 
-<header className="sticky top-0 z-40 border-b  bg-white shadow-sm">
-  <nav className="mx-auto flex max-w-8xl flex-wrap items-center justify-between gap-4 bg-green-700 px-4 py-4">
+
+{/* Navigation */}
+<header className="sticky top-0 z-40 border-b bg-white shadow-sm">
+  <nav className="mx-auto flex max-w-8xl flex-wrap items-center justify-between gap-3 bg-green-700 px-4 py-4">
+    {/* Store name */}
     <a
       href="#home"
+      onClick={() => setMenuOpen(false)}
       className="text-2xl font-extrabold text-white"
     >
       BizOrder
     </a>
 
-    <div className="flex flex-wrap items-center gap-4 text-sm font-medium">
-      <a href="#home" className="text-white transition hover:text-gray-200">
-        Home
-      </a>
-
-      <a href="#products" className="text-white transition hover:text-gray-200">
-        Products
-      </a>
-
-      <a href="#about" className="text-white transition hover:text-gray-200">
-        About Us
-      </a>
-
-      <a href="#contact" className="text-white transition hover:text-gray-200">
-        Contact Us
-      </a>
-
-      {/* Red Shopping Cart */}
+    {/* Cart stays visible outside the mobile menu */}
+    <div className="ml-auto flex items-center gap-2 sm:ml-0">
       <a
         href="#cart"
         aria-label={`Shopping cart with ${totalItems} items`}
-        className="relative inline-flex items-center gap-2 rounded-lg bg-red-600 px-4 py-2 font-bold text-white shadow transition hover:bg-red-700"
+        className="inline-flex items-center gap-2 rounded-lg bg-red-600 px-3 py-2 font-bold text-white shadow transition hover:bg-red-700"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -290,17 +280,94 @@ function Store() {
           <circle cx="20" cy="21" r="1" />
           <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
         </svg>
-
         <span>Cart</span>
-
         <span className="flex min-h-6 min-w-6 items-center justify-center rounded-full bg-white px-1 text-xs font-extrabold text-red-600">
           {totalItems}
         </span>
       </a>
 
+      {/* Mobile menu toggle */}
+      <button
+        type="button"
+        onClick={() => setMenuOpen((open) => !open)}
+        aria-expanded={menuOpen}
+        aria-controls="mobile-navigation"
+        aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
+        className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-green-500 text-white transition hover:bg-green-600 sm:hidden"
+      >
+        {menuOpen ? (
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            className="h-6 w-6"
+            aria-hidden="true"
+          >
+            <path d="M18 6 6 18M6 6l12 12" />
+          </svg>
+        ) : (
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            className="h-6 w-6"
+            aria-hidden="true"
+          >
+            <path d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        )}
+      </button>
+    </div>
+
+    {/* Navigation links: dropdown on mobile, horizontal on desktop */}
+    <div
+      id="mobile-navigation"
+      className={`${
+        menuOpen ? "flex" : "hidden"
+      } w-full flex-col gap-1 border-t border-green-600 pt-3 text-sm font-medium sm:flex sm:w-auto sm:flex-row sm:items-center sm:gap-5 sm:border-0 sm:pt-0`}
+    >
+      <a
+        href="#home"
+        onClick={() => setMenuOpen(false)}
+        className="rounded-lg px-3 py-2 text-white transition hover:bg-green-600"
+      >
+        Home
+      </a>
+
+      <a
+        href="#products"
+        onClick={() => setMenuOpen(false)}
+        className="rounded-lg px-3 py-2 text-white transition hover:bg-green-600"
+      >
+        Products
+      </a>
+
+      <a
+        href="#about"
+        onClick={() => setMenuOpen(false)}
+        className="rounded-lg px-3 py-2 text-white transition hover:bg-green-600"
+      >
+        About Us
+      </a>
+
+      <a
+        href="#contact"
+        onClick={() => setMenuOpen(false)}
+        className="rounded-lg px-3 py-2 text-white transition hover:bg-green-600"
+      >
+        Contact Us
+      </a>
+
       <Link
         to="/admin"
-        className="rounded-lg bg-white px-3 py-2 font-semibold text-red-600 transition hover:bg-gray-100"
+        onClick={() => setMenuOpen(false)}
+        className="rounded-full bg-white px-4 py-2 text-center font-semibold text-red-600 transition hover:bg-gray-100"
       >
         Admin
       </Link>
