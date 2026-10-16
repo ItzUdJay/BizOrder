@@ -460,7 +460,7 @@ function Store() {
           className="flex flex-col overflow-hidden rounded-xl border bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-md"
         >
           {/* Product Image: tap to view the full image */}
-          <div className="h-64 w-full overflow-hidden bg-gray-100 sm:h-72">
+          <div className="h-full w-full overflow-hidden bg-gray-100 sm:h-72">
             {item.image ? (
               <button
                 type="button"
@@ -481,7 +481,7 @@ function Store() {
                 </span>
               </button>
             ) : (
-              <div className="flex h-full items-center justify-center text-7xl">
+              <div className="flex h-full items-center justify-center text-3xl">
                 🛍️
               </div>
             )}
@@ -493,11 +493,11 @@ function Store() {
               {ClipboardItem.category || "Product"}
             </p>
 
-            <h3 className="mt-2 text-xl font-bold">
+            <h3 className="mt-1 text-1xl font-bold">
               {item.name}
             </h3>
 
-            <p className="mt-3 text-2xl font-extrabold text-gray-900">
+            <p className="mt-1 text-1xl font-extrabold text-gray-900">
               ₦{Number(item.price).toLocaleString("en-NG")}
             </p>
 
@@ -506,7 +506,7 @@ function Store() {
               <button
                 type="button"
                 onClick={() => addToCart(item)}
-                className="w-full rounded-lg bg-green-700 px-4 py-3 font-semibold text-white transition hover:bg-green-800"
+                className="w-full rounded-lg bg-green-700 px-2 py-1 font-semibold text-white transition hover:bg-green-800"
               >
                 Add to Cart
               </button>
@@ -514,9 +514,9 @@ function Store() {
               <button
                 type="button"
                 onClick={() => orderProduct(item)}
-                className="w-full rounded-lg border border-green-700 px-4 py-3 font-semibold text-green-800 transition hover:bg-green-50"
+                className="w-full rounded-lg border border-green-700 px-2 py-1 font-semibold text-green-800 transition hover:bg-green-50"
               >
-                Order on WhatsApp
+               Click to Order on WhatsApp
               </button>
             </div>
           </div>
