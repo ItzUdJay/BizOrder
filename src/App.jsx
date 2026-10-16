@@ -760,154 +760,176 @@ function Store() {
         </div>
       </section>
 
-{/* Footer */}
-<footer className="bg-gray-950 px-6 py-12 text-white sm:px-10">
-  <div className="mx-auto max-w-7xl">
-
-    {/* Footer Heading */}
-    <div className="mb-10">
-      <a
-        href="#home"
-        className="text-3xl font-extrabold text-green-400"
-      >
-        BizOrder
-      </a>
-
-      <p className="mt-3 max-w-md text-sm leading-6 text-gray-400">
-        Shop your favourite products with ease.
-        Browse our collection and place your orders conveniently
-        through WhatsApp.
-      </p>
-    </div>
-
-    {/* Footer Menus */}
-    <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
-
-      {/* Quick Links */}
-      <div>
-        <h3 className="mb-4 font-bold">Quick Links</h3>
-
-        <ul className="space-y-3 text-sm text-gray-400">
-          <li>
-            <a href="#home" className="transition hover:text-green-400">
-              Home
-            </a>
-          </li>
-
-          <li>
-            <a href="#products" className="transition hover:text-green-400">
-              Products
-            </a>
-          </li>
-
-          <li>
-            <a href="#about" className="transition hover:text-green-400">
-              About Us
-            </a>
-          </li>
-
-          <li>
-            <a href="#contact" className="transition hover:text-green-400">
-              Contact Us
-            </a>
-          </li>
-        </ul>
-      </div>
-
-      {/* Customer Service */}
-      <div>
-        <h3 className="mb-4 font-bold">Customer Service</h3>
-
-        <ul className="space-y-3 text-sm text-gray-400">
-          <li>
-            <a href="#contact" className="transition hover:text-green-400">
-              Contact Support
-            </a>
-          </li>
-
-          <li>
+ 
+      {/* Footer */}
+      <footer className="bg-gray-950 px-6 py-12 text-white sm:px-10">
+        <div className="mx-auto max-w-7xl">
+          <div className="mb-10">
             <a
-              href="https://wa.me/2349017928914"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="transition hover:text-green-400"
+              href="#home"
+              className="text-3xl font-extrabold text-green-400"
             >
-              WhatsApp Support
+              BizOrder
             </a>
-          </li>
 
-          <li>
-            <a href="#cart" className="transition hover:text-green-400">
-              Shopping Cart
-            </a>
-          </li>
-        </ul>
-      </div>
+            <p className="mt-3 max-w-md text-sm leading-6 text-gray-400">
+              Shop your favourite products with ease. Browse our
+              collection and place your orders conveniently through WhatsApp.
+            </p>
+          </div>
 
-      {/* My Account */}
-      <div>
-        <h3 className="mb-4 font-bold">My Account</h3>
+          <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
+            {/* Quick Links */}
+            <div>
+              <h3 className="mb-4 font-bold">Quick Links</h3>
+              <ul className="space-y-3 text-sm text-gray-400">
+                <li><a href="#home" className="hover:text-green-400">Home</a></li>
+                <li><a href="#products" className="hover:text-green-400">Products</a></li>
+                <li><a href="#about" className="hover:text-green-400">About Us</a></li>
+                <li><a href="#contact" className="hover:text-green-400">Contact Us</a></li>
+              </ul>
+            </div>
 
-        <ul className="space-y-3 text-sm text-gray-400">
-          <li>
-            <a href="#cart" className="transition hover:text-green-400">
-              My Cart
-            </a>
-          </li>
+            {/* Customer Service */}
+            <div>
+              <h3 className="mb-4 font-bold">Customer Service</h3>
+              <ul className="space-y-3 text-sm text-gray-400">
+                <li><a href="#contact" className="hover:text-green-400">Contact Support</a></li>
+                <li>
+                  <a
+                    href="https://wa.me/2349017928914"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-green-400"
+                  >
+                    WhatsApp Support
+                  </a>
+                </li>
+                <li><a href="#cart" className="hover:text-green-400">Shopping Cart</a></li>
+              </ul>
+            </div>
 
-          <li>
-            <Link
-              to="/admin"
-              className="transition hover:text-green-400"
-            >
-              Admin Dashboard
-            </Link>
-          </li>
-        </ul>
-      </div>
+            {/* My Account */}
+            <div>
+              <h3 className="mb-4 font-bold">My Account</h3>
+              <ul className="space-y-3 text-sm text-gray-400">
+                <li><a href="#cart" className="hover:text-green-400">My Cart</a></li>
+                <li>
+                  <Link to="/admin" className="hover:text-green-400">
+                    Admin Dashboard
+                  </Link>
+                </li>
+              </ul>
+            </div>
 
-      {/* Follow Us */}
-      <div>
-        <h3 className="mb-4 font-bold">Follow Us</h3>
+            {/* Follow Us */}
+            <div>
+              <h3 className="mb-4 font-bold">Follow Us</h3>
+              <ul className="space-y-3 text-sm text-gray-400">
+                <li>
+                  <a
+                    href="https://wa.me/2349017928914"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-green-400"
+                  >
+                    WhatsApp
+                  </a>
+                </li>
+                <li><a href="#contact" className="hover:text-green-400">Get in Touch</a></li>
+              </ul>
+            </div>
+          </div>
 
-        <ul className="space-y-3 text-sm text-gray-400">
-          <li>
+          {/* Copyright */}
+          <div className="mt-10 border-t border-gray-800 pt-6 text-center">
+            <p className="text-sm text-gray-400">
+              © {new Date().getFullYear()} BizOrder. All rights reserved.
+            </p>
             <a
-              href="https://wa.me/2349017928914"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="transition hover:text-green-400"
+              href="#home"
+              className="mt-3 inline-block text-sm text-green-400 hover:text-green-300"
             >
-              WhatsApp
+              Back to Top ↑
             </a>
-          </li>
+          </div>
+        </div>
+      </footer>
 
-          <li>
-            <a href="#contact" className="transition hover:text-green-400">
-              Get in Touch
-            </a>
-          </li>
-        </ul>
-      </div>
-
-    </div>
-
-    {/* Copyright */}
-    <div className="mt-10 border-t border-gray-800 pt-6 text-center">
-      <p className="text-sm text-gray-400">
-        © {new Date().getFullYear()} BizOrder. All rights reserved.
-      </p>
-
-      <a
-        href="#home"
-        className="mt-3 inline-block text-sm text-green-400 hover:text-green-300"
+      {/* Mobile Bottom Navigation */}
+      <nav
+        aria-label="Mobile bottom navigation"
+        className="fixed bottom-0 left-0 z-50 grid w-full grid-cols-3 border-t border-gray-200 bg-white shadow-lg md:hidden"
+        style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
       >
-        Back to Top ↑
-      </a>
-    </div>
+        {/* Home */}
+        <a
+          href="#home"
+          className="flex flex-col items-center justify-center gap-1 py-3 text-green-700 transition hover:bg-green-50"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="h-6 w-6"
+            aria-hidden="true"
+          >
+            <path d="m3 10 9-7 9 7" />
+            <path d="M5 9v11h14V9" />
+            <path d="M9 20v-7h6v7" />
+          </svg>
+          <span className="text-xs font-bold">Home</span>
+        </a>
 
-  </div>
-</footer>
+        {/* Discover */}
+        <a
+          href="#products"
+          className="flex flex-col items-center justify-center gap-1 py-3 text-gray-500 transition hover:bg-green-50 hover:text-green-700"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="h-6 w-6"
+            aria-hidden="true"
+          >
+            <circle cx="11" cy="11" r="8" />
+            <path d="m21 21-4.35-4.35" />
+          </svg>
+          <span className="text-xs font-bold">Discover</span>
+        </a>
+
+        {/* Orders */}
+        <a
+          href="#cart"
+          className="flex flex-col items-center justify-center gap-1 py-3 text-gray-500 transition hover:bg-green-50 hover:text-green-700"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="h-6 w-6"
+            aria-hidden="true"
+          >
+            <circle cx="9" cy="21" r="1" />
+            <circle cx="20" cy="21" r="1" />
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+          </svg>
+          <span className="text-xs font-bold">Orders</span>
+        </a>
+      </nav>
 
       {/* Full-screen product image viewer */}
       {zoomedImage && (
@@ -926,6 +948,7 @@ function Store() {
           >
             ×
           </button>
+
           <div
             className="flex max-h-full max-w-5xl flex-col items-center gap-3"
             onClick={(event) => event.stopPropagation()}
@@ -944,6 +967,7 @@ function Store() {
     </div>
   );
 }
+
 
 function NotFound() {
   return (
