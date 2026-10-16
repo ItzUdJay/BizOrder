@@ -453,7 +453,7 @@ function Store() {
 {!loadingProducts &&
   !productError &&
   filteredProducts.length > 0 && (
-    <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+    <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4">
       {filteredProducts.map((item) => (
         <article
           key={item.id}
@@ -760,18 +760,154 @@ function Store() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-gray-900 px-4 py-8 text-center text-white">
-        <h2 className="text-xl font-bold">BizOrder</h2>
+{/* Footer */}
+<footer className="bg-gray-950 px-6 py-12 text-white sm:px-10">
+  <div className="mx-auto max-w-7xl">
 
-        <p className="mt-2 text-sm text-gray-300">
-          Simple shopping. Convenient ordering.
-        </p>
+    {/* Footer Heading */}
+    <div className="mb-10">
+      <a
+        href="#home"
+        className="text-3xl font-extrabold text-green-400"
+      >
+        BizOrder
+      </a>
 
-        <p className="mt-4 text-xs text-gray-400">
-          © {new Date().getFullYear()} BizOrder. All rights reserved.
-        </p>
-      </footer>
+      <p className="mt-3 max-w-md text-sm leading-6 text-gray-400">
+        Shop your favourite products with ease.
+        Browse our collection and place your orders conveniently
+        through WhatsApp.
+      </p>
+    </div>
+
+    {/* Footer Menus */}
+    <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
+
+      {/* Quick Links */}
+      <div>
+        <h3 className="mb-4 font-bold">Quick Links</h3>
+
+        <ul className="space-y-3 text-sm text-gray-400">
+          <li>
+            <a href="#home" className="transition hover:text-green-400">
+              Home
+            </a>
+          </li>
+
+          <li>
+            <a href="#products" className="transition hover:text-green-400">
+              Products
+            </a>
+          </li>
+
+          <li>
+            <a href="#about" className="transition hover:text-green-400">
+              About Us
+            </a>
+          </li>
+
+          <li>
+            <a href="#contact" className="transition hover:text-green-400">
+              Contact Us
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      {/* Customer Service */}
+      <div>
+        <h3 className="mb-4 font-bold">Customer Service</h3>
+
+        <ul className="space-y-3 text-sm text-gray-400">
+          <li>
+            <a href="#contact" className="transition hover:text-green-400">
+              Contact Support
+            </a>
+          </li>
+
+          <li>
+            <a
+              href="https://wa.me/2349017928914"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition hover:text-green-400"
+            >
+              WhatsApp Support
+            </a>
+          </li>
+
+          <li>
+            <a href="#cart" className="transition hover:text-green-400">
+              Shopping Cart
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      {/* My Account */}
+      <div>
+        <h3 className="mb-4 font-bold">My Account</h3>
+
+        <ul className="space-y-3 text-sm text-gray-400">
+          <li>
+            <a href="#cart" className="transition hover:text-green-400">
+              My Cart
+            </a>
+          </li>
+
+          <li>
+            <Link
+              to="/admin"
+              className="transition hover:text-green-400"
+            >
+              Admin Dashboard
+            </Link>
+          </li>
+        </ul>
+      </div>
+
+      {/* Follow Us */}
+      <div>
+        <h3 className="mb-4 font-bold">Follow Us</h3>
+
+        <ul className="space-y-3 text-sm text-gray-400">
+          <li>
+            <a
+              href="https://wa.me/2349017928914"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition hover:text-green-400"
+            >
+              WhatsApp
+            </a>
+          </li>
+
+          <li>
+            <a href="#contact" className="transition hover:text-green-400">
+              Get in Touch
+            </a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    {/* Copyright */}
+    <div className="mt-10 border-t border-gray-800 pt-6 text-center">
+      <p className="text-sm text-gray-400">
+        © {new Date().getFullYear()} BizOrder. All rights reserved.
+      </p>
+
+      <a
+        href="#home"
+        className="mt-3 inline-block text-sm text-green-400 hover:text-green-300"
+      >
+        Back to Top ↑
+      </a>
+    </div>
+
+  </div>
+</footer>
 
       {/* Full-screen product image viewer */}
       {zoomedImage && (
