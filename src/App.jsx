@@ -677,9 +677,19 @@ function Store() {
                     className="flex flex-wrap items-center justify-between gap-4 rounded-xl border p-4"
                   >
                     <div className="flex min-w-0 items-center gap-4">
-                      <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-lg bg-green-50 text-3xl">
-                        {item.image || "🛍️"}
-                      </div>
+                     
+              <div className="flex h-16 w-16 shrink-0 items-center justify-center overflow-hidden rounded-lg bg-green-50">
+              {item.image ? (
+               <img
+               src={item.image}
+                alt={item.name}
+                className="h-full w-full object-cover"
+                        />
+                         ) : (
+                     <span className="text-3xl">🛍️</span>
+                     )}
+                       </div>
+
 
                       <div>
                         <h3 className="font-bold">{item.name}</h3>
