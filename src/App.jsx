@@ -516,7 +516,7 @@ function Store() {
                 onClick={() => orderProduct(item)}
                 className="w-full rounded-lg border border-green-700 px-2 py-1 font-semibold text-green-800 transition hover:bg-green-50"
               >
-               Click to Order on WhatsApp
+                Order on WhatsApp
               </button>
             </div>
           </div>
